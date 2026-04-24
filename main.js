@@ -20,6 +20,24 @@
   var panel = document.getElementById('mobile-nav');
   var backdrop = document.querySelector('.mobile-backdrop');
 
+  function scrollToSection(id, afterLayout) {
+    function run() {
+      var el = document.getElementById(id);
+      if (!el) {
+        return;
+      }
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    }
+    if (afterLayout) {
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(run);
+      });
+    } else {
+      run();
+    }
+  }
+
   function setMenuOpen(open) {
     if (!toggle || !panel) return;
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -49,6 +67,63 @@
       if (e.key === 'Escape') setMenuOpen(false);
     });
   }
+
+  /* Same-page #fragment links: use capture so we read `nav-open` before the mobile menu’s
+     bubble listener closes the menu. After `overflow: hidden` is removed, double-rAF scroll
+     avoids a jump to the top (common on iOS). */
+  document.addEventListener(
+    'click',
+    function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href*="#"]') : null;
+      if (!a) {
+        return;
+      }
+      if (a.getAttribute('download') != null) {
+        return;
+      }
+      var t = a.getAttribute('target');
+      if (t && t !== '' && t !== '_self') {
+        return;
+      }
+      var hrefAttr = a.getAttribute('href');
+      if (!hrefAttr || hrefAttr === '#') {
+        return;
+      }
+      var url;
+      try {
+        url = new URL(a.href, window.location.href);
+      } catch (err) {
+        return;
+      }
+      if (url.origin !== window.location.origin) {
+        return;
+      }
+      if (url.pathname !== window.location.pathname) {
+        return;
+      }
+      if (!url.hash || url.hash === '#') {
+        return;
+      }
+      var id = url.hash.slice(1);
+      if (!id) {
+        return;
+      }
+      var targetEl = document.getElementById(id);
+      if (!targetEl) {
+        return;
+      }
+      var wasNavOpen = document.body.classList.contains('nav-open');
+      e.preventDefault();
+      setMenuOpen(false);
+      try {
+        history.replaceState(null, '', url.pathname + url.search + url.hash);
+      } catch (err2) {
+        window.location.hash = id;
+      }
+      scrollToSection(id, wasNavOpen);
+    },
+    true
+  );
 
   /* Footer year */
   var footerYear = document.getElementById('footer-year');
@@ -133,13 +208,6 @@
 
   function getUnitFilterCards() {
     return document.querySelectorAll('#unit-grid .unit-card[data-unit-category]');
-  }
-
-  function scrollToSection(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   }
 
   function applyUnitFilter(filter) {

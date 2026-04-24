@@ -44,6 +44,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Offset fixed announcement + header so in-page #targets aren’t hidden under the bars */
+  scroll-padding-top: calc(var(--announce-h) + var(--header-h) + 0.5rem);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -74,7 +76,8 @@ html {
 
 body {
   margin: 0;
-  padding-top: var(--announce-h);
+  /* Fixed announcement + fixed site header: reserve the same space they occupy visually */
+  padding-top: calc(var(--announce-h) + var(--header-h));
   padding-bottom: var(--fab-safe);
   font-family: var(--font-sans);
   font-size: 1rem;
