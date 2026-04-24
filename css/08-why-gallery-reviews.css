@@ -19,7 +19,7 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s var(--ease-out), box-shadow 0.3s, border-color 0.3s;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s, border-color 0.3s;
 }
 
 .why-card:hover {
@@ -84,7 +84,7 @@
   overflow: hidden;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+  transition: box-shadow 0.35s var(--ease-out), transform 0.35s var(--ease-spring);
 }
 
 .gallery-item::after {
@@ -173,7 +173,7 @@
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.35s var(--ease-out), box-shadow 0.35s, border-color 0.35s;
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s, border-color 0.35s;
   position: relative;
 }
 

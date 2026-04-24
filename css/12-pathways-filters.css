@@ -46,9 +46,26 @@
   border: 1px solid var(--color-border);
   background: var(--color-surface);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.35s var(--ease-out), border-color 0.35s, transform 0.35s var(--ease-out);
+  transition: box-shadow 0.35s var(--ease-out), border-color 0.35s, transform 0.35s var(--ease-spring);
   position: relative;
   overflow: hidden;
+}
+
+.journey-card-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 50% -20%, rgba(139, 115, 85, 0.18) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.journey-card-inner > * {
+  position: relative;
+  z-index: 2;
 }
 
 .journey-card-inner::before {
@@ -60,6 +77,7 @@
   height: 4px;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   opacity: 0.9;
+  z-index: 1;
 }
 
 .journey-card--retail::before {
@@ -78,6 +96,10 @@
   box-shadow: var(--shadow-card-hover);
   border-color: rgba(139, 115, 85, 0.28);
   transform: translateY(-4px);
+}
+
+.journey-paths .journey-card:hover .journey-card-inner::after {
+  opacity: 1;
 }
 
 .journey-badge {
@@ -234,9 +256,22 @@
   border-color: rgba(45, 74, 111, 0.2);
 }
 
-/* Filtered-out cards */
+/* Filtered-out cards — animated collapse */
 .unit-card.is-filtered-out {
-  display: none;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.95);
+  max-height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  border-width: 0;
+  transition:
+    opacity 0.3s var(--ease-anticipate),
+    transform 0.3s var(--ease-anticipate),
+    max-height 0.45s var(--ease-snappy),
+    margin 0.35s var(--ease-snappy),
+    border-width 0.25s var(--ease-snappy),
+    box-shadow 0.25s var(--ease-snappy);
 }
 
 /* Empty state */
@@ -259,7 +294,7 @@
 /* Gallery: crisper crossfade */
 .unit-media-image {
   will-change: opacity;
-  transition: opacity 0.45s var(--ease-out), transform 0.55s var(--ease-out);
+  transition: opacity 0.45s var(--ease-in-out), transform 0.55s var(--ease-out);
 }
 
 /* —— Mobile bottom CTA (replaces floating WhatsApp) —— */
@@ -279,6 +314,7 @@
   gap: 0.5rem;
   align-items: center;
   justify-content: space-between;
+  animation: cta-bar-slide-up 0.5s var(--ease-out) 0.6s both;
 }
 
 @media (max-width: 767px) {
@@ -307,6 +343,14 @@
   .pathways-section .journey-paths .reveal:nth-child(3) {
     transition-delay: 0s !important;
   }
+
+  .unit-card.is-filtered-out {
+    transition: none !important;
+  }
+
+  .mobile-cta-bar {
+    animation: none !important;
+  }
 }
 
 .mobile-cta-btn {
@@ -322,7 +366,7 @@
   text-decoration: none;
   border-radius: var(--radius);
   border: 1px solid transparent;
-  transition: background 0.2s, transform 0.2s var(--ease-out);
+  transition: background 0.2s, transform 0.2s var(--ease-spring);
 }
 
 .mobile-cta-btn--ghost {

@@ -70,7 +70,7 @@
   box-shadow: var(--shadow-sm);
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 0.3s var(--ease-out), border-color 0.3s, transform 0.3s var(--ease-out);
+  transition: box-shadow 0.3s var(--ease-out), border-color 0.3s, transform 0.3s var(--ease-spring);
   position: relative;
   overflow: hidden;
 }
@@ -86,7 +86,7 @@
   opacity: 0.85;
   transform: scaleX(0.35);
   transform-origin: left;
-  transition: transform 0.35s var(--ease-out);
+  transition: transform 0.35s var(--ease-spring);
 }
 
 .hub-card:hover {

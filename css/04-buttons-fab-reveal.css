@@ -17,7 +17,7 @@
     background 0.25s var(--ease-out),
     color 0.25s,
     border-color 0.25s,
-    transform 0.25s var(--ease-out),
+    transform 0.25s var(--ease-spring),
     box-shadow 0.25s;
 }
 
@@ -85,6 +85,30 @@
 
 /* Floating WhatsApp */
 
+@keyframes fab-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.7) translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes cta-bar-slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .fab-whatsapp {
   position: fixed;
   right: 1rem;
@@ -99,7 +123,8 @@
   color: #fff;
   border-radius: 50%;
   box-shadow: 0 8px 28px rgba(37, 211, 102, 0.4);
-  transition: transform 0.25s var(--ease-out), box-shadow 0.25s;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
+  animation: fab-enter 0.55s var(--ease-spring) 0.8s both;
 }
 
 .fab-whatsapp:hover {
@@ -120,12 +145,25 @@
 
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.reveal[data-reveal="right"] {
+  transform: translateX(-28px);
+}
+
+.reveal[data-reveal="scale"] {
+  transform: scale(0.94) translateY(16px);
+}
+
+.reveal[data-reveal="fade"] {
+  transform: none;
+  transition-duration: 1.1s;
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 

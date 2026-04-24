@@ -32,8 +32,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="assets/media/hero-placeholder.jpg" fetchpriority="high">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&amp;family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&amp;family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="styles.css">
 
   <script src="site-config.js"></script>
@@ -286,6 +286,7 @@
   </script>
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="announcement-bar">
@@ -361,7 +362,7 @@
               <span class="trust-badge" role="listitem"><span class="trust-dot" aria-hidden="true"></span>Typical reply under 30 min (9 AM–9 PM)</span>
             </div>
           </div>
-          <dl class="hero-stats">
+          <dl class="hero-stats reveal" data-reveal="right">
             <div class="hero-stat">
               <dt>
                 <span class="hero-stat-icon" aria-hidden="true">
@@ -391,7 +392,7 @@
             </div>
           </dl>
         </div>
-        <div class="hero-visual reveal" aria-hidden="true">
+        <div class="hero-visual reveal" data-reveal="fade" aria-hidden="true">
           <div class="hero-visual-card">
             <img src="assets/media/hero-placeholder.jpg" alt="City Center — C1 Markaz, B-17 Islamabad (representative image)" width="400" height="500" fetchpriority="high" decoding="async" class="hero-visual-img">
             <p class="hero-visual-caption">Imagery is representative. Ask on WhatsApp for <strong>current photos and video</strong> of units available now.</p>
@@ -403,12 +404,12 @@
     <section id="pathways" class="pathways-section" aria-labelledby="pathways-heading">
       <div class="container">
         <header class="section-header reveal">
-          <p class="section-eyebrow">Start here</p>
+          <p class="section-eyebrow section-eyebrow--shimmer">Start here</p>
           <h2 id="pathways-heading">What are you looking for?</h2>
           <p>Choose retail, residential, or workspace—then jump to matching units. Dedicated SEO pages are linked if you want more context first.</p>
         </header>
         <ul class="journey-paths">
-          <li class="journey-card reveal">
+          <li class="journey-card reveal" data-reveal="scale">
             <div class="journey-card-inner journey-card--retail">
               <span class="journey-badge">Retail &amp; services</span>
               <h3>Shops on Street 41</h3>
@@ -420,7 +421,7 @@
               </div>
             </div>
           </li>
-          <li class="journey-card reveal">
+          <li class="journey-card reveal" data-reveal="scale">
             <div class="journey-card-inner journey-card--residential">
               <span class="journey-badge">1–3 bed flats</span>
               <h3>Apartments in B-17</h3>
@@ -432,7 +433,7 @@
               </div>
             </div>
           </li>
-          <li class="journey-card reveal">
+          <li class="journey-card reveal" data-reveal="scale">
             <div class="journey-card-inner journey-card--work">
               <span class="journey-badge">Workspace</span>
               <h3>Offices for teams</h3>
@@ -452,7 +453,7 @@
     <section class="section hub-section" aria-labelledby="hub-heading">
       <div class="container">
         <header class="section-header reveal">
-          <p class="section-eyebrow">Wayfinding</p>
+          <p class="section-eyebrow section-eyebrow--shimmer">Wayfinding</p>
           <h2 id="hub-heading">Rent by type — B-17 &amp; C1 Markaz</h2>
           <p>Dedicated pages for search intent: flats, shops, and offices at City Center, plus our location guide for C1 Markaz.</p>
         </header>
@@ -495,7 +496,7 @@
     <section id="highlights" class="section highlights-section">
       <div class="container">
         <header class="section-header reveal">
-          <p class="section-eyebrow">The property</p>
+          <p class="section-eyebrow section-eyebrow--shimmer">The property</p>
           <h2>Building highlights</h2>
           <p>What sets City Center apart for retailers, residents, and businesses in C1 Markaz.</p>
         </header>
@@ -535,7 +536,7 @@
     <section id="units" class="section units-section">
       <div class="container">
         <header class="section-header reveal">
-          <p class="section-eyebrow">Live inventory</p>
+          <p class="section-eyebrow section-eyebrow--shimmer">Live inventory</p>
           <h2>Available units</h2>
           <p>Ground-floor retail, 1–3 bedroom flats, and professional office space—all within City Center C1 Markaz.</p>
         </header>
@@ -562,7 +563,7 @@
         <p id="unit-filter-empty" class="unit-grid-empty" role="status">No units match this filter. Choose &quot;All&quot; to see every option.</p>
 
         <div class="unit-grid" id="unit-grid">
-          <article id="unit-shop" class="unit-card listing-card reveal" data-unit-category="shop">
+          <article id="unit-shop" class="unit-card listing-card reveal" data-reveal="scale" data-unit-category="shop">
             <div class="unit-media" data-gallery>
               <div class="listing-meta-row listing-meta-row--media">
                 <span class="listing-badge listing-badge--enquire">Enquire</span>
@@ -597,7 +598,7 @@
             <a class="btn btn-whatsapp btn-block btn-sm" href="https://wa.me/923309089380?text=Hi%2C%20I%27m%20interested%20in%20a%20shop%20at%20City%20Center%20C1%20Markaz%20B-17." target="_blank" rel="noopener noreferrer">WhatsApp about this unit</a>
           </article>
 
-          <article id="unit-flat-1" class="unit-card listing-card reveal" data-unit-category="flat">
+          <article id="unit-flat-1" class="unit-card listing-card reveal" data-reveal="scale" data-unit-category="flat">
             <div class="unit-media" data-gallery>
               <div class="listing-meta-row listing-meta-row--media">
                 <span class="listing-badge listing-badge--enquire">Enquire</span>
@@ -632,7 +633,7 @@
             <a class="btn btn-whatsapp btn-block btn-sm" href="https://wa.me/923309089380?text=Hi%2C%20I%27m%20interested%20in%20a%201-bed%20flat%20at%20City%20Center%20C1%20Markaz%20B-17." target="_blank" rel="noopener noreferrer">WhatsApp about this unit</a>
           </article>
 
-          <article id="unit-flat-2" class="unit-card listing-card reveal" data-unit-category="flat">
+          <article id="unit-flat-2" class="unit-card listing-card reveal" data-reveal="scale" data-unit-category="flat">
             <div class="unit-media" data-gallery>
               <div class="listing-meta-row listing-meta-row--media">
                 <span class="listing-badge listing-badge--enquire">Enquire</span>
@@ -667,7 +668,7 @@
             <a class="btn btn-whatsapp btn-block btn-sm" href="https://wa.me/923309089380?text=Hi%2C%20I%27m%20interested%20in%20a%202-bed%20flat%20at%20City%20Center%20C1%20Markaz%20B-17." target="_blank" rel="noopener noreferrer">WhatsApp about this unit</a>
           </article>
 
-          <article id="unit-flat-3" class="unit-card listing-card reveal" data-unit-category="flat">
+          <article id="unit-flat-3" class="unit-card listing-card reveal" data-reveal="scale" data-unit-category="flat">
             <div class="unit-media" data-gallery>
               <div class="listing-meta-row listing-meta-row--media">
                 <span class="listing-badge listing-badge--enquire">Enquire</span>
@@ -702,7 +703,7 @@
             <a class="btn btn-whatsapp btn-block btn-sm" href="https://wa.me/923309089380?text=Hi%2C%20I%27m%20interested%20in%20a%203-bed%20flat%20at%20City%20Center%20C1%20Markaz%20B-17." target="_blank" rel="noopener noreferrer">WhatsApp about this unit</a>
           </article>
 
-          <article id="unit-office" class="unit-card unit-card--full listing-card reveal" data-unit-category="office">
+          <article id="unit-office" class="unit-card unit-card--full listing-card reveal" data-reveal="scale" data-unit-category="office">
             <div class="unit-media" data-gallery>
               <div class="listing-meta-row listing-meta-row--media">
                 <span class="listing-badge listing-badge--enquire">Enquire</span>
@@ -743,7 +744,7 @@
     <section id="why-us" class="section why-section">
       <div class="container">
         <header class="section-header reveal">
-          <p class="section-eyebrow">Tenant experience</p>
+          <p class="section-eyebrow section-eyebrow--shimmer">Tenant experience</p>
           <h2>Why choose us</h2>
           <p>City Center is built for tenants who want security, convenience, and a professional environment in the heart of C1 Markaz.</p>
         </header>
@@ -797,7 +798,7 @@
     <section id="gallery" class="section gallery-section">
       <div class="container">
         <header class="section-header reveal">
-          <p class="section-eyebrow">Visual tour</p>
+          <p class="section-eyebrow section-eyebrow--shimmer">Visual tour</p>
           <h2>Gallery</h2>
           <p>Visual reference for the City Center experience—<strong>representative imagery</strong>. Request <strong>current photos and video</strong> of available units on WhatsApp.</p>
         </header>
@@ -835,7 +836,7 @@
     <section id="reviews" class="section reviews-section">
       <div class="container">
         <header class="section-header reveal">
-          <p class="section-eyebrow">Testimonials</p>
+          <p class="section-eyebrow section-eyebrow--shimmer">Testimonials</p>
           <h2>What tenants say</h2>
           <p>Feedback from residents and businesses at City Center C1 Markaz. <span class="reviews-disclaimer">Shared with permission; individual experiences may vary.</span></p>
         </header>
@@ -871,7 +872,7 @@
     <section id="viewing" class="section viewing-section">
       <div class="container">
         <header class="section-header reveal">
-          <p class="section-eyebrow">Three steps</p>
+          <p class="section-eyebrow section-eyebrow--shimmer">Three steps</p>
           <h2>How renting works</h2>
           <p>A straightforward process from first message to keys—most steps happen on WhatsApp for speed and clarity.</p>
         </header>
@@ -904,7 +905,7 @@
     <section id="location" class="section location-section">
       <div class="container">
         <header class="section-header section-header--left reveal location-section-header">
-          <p class="section-eyebrow">Prime address</p>
+          <p class="section-eyebrow section-eyebrow--shimmer">Prime address</p>
           <h2>Location</h2>
           <p>City Center sits in the heart of <strong>C1 Markaz</strong>, one of B-17’s main commercial clusters—easy to find and well linked to surrounding sectors.</p>
         </header>
@@ -1059,7 +1060,7 @@
     <section id="faq" class="section faq-section">
       <div class="container">
         <header class="section-header reveal">
-          <p class="section-eyebrow">FAQ</p>
+          <p class="section-eyebrow section-eyebrow--shimmer">FAQ</p>
           <h2>Frequently asked questions</h2>
           <p>Quick answers about renting at City Center C1 Markaz, B-17 Islamabad.</p>
         </header>

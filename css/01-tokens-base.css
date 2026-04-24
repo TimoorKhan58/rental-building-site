@@ -20,8 +20,8 @@
   --color-whatsapp-hover: #1dae56;
   --color-star: #c9a227;
   --color-footer-bg: #121820;
-  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --radius: 14px;
   --radius-lg: 22px;
   --radius-xl: 28px;
@@ -34,6 +34,22 @@
   --fab-safe: 5.5rem;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-snappy: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-anticipate: cubic-bezier(0.36, 0, 0.66, -0.56);
+}
+
+/* Reading progress — subtle luxury cue */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-accent));
+  transition: width 0.1s linear;
+  pointer-events: none;
 }
 
 *,
@@ -53,15 +69,41 @@ html {
     scroll-behavior: auto;
   }
 
+  .scroll-progress {
+    display: none !important;
+  }
+
   .hero-bg--motion {
     animation: none !important;
   }
 
   .hero-animate .hero-kicker,
   .hero-animate h1,
+  .hero-animate h1 .h1-word,
   .hero-animate .hero-lead,
   .hero-animate .hero-actions,
   .hero-animate .trust-badges {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .trust-dot {
+    animation: none !important;
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.35) !important;
+  }
+
+  .hero-visual-card {
+    animation: none !important;
+  }
+
+  .fab-whatsapp {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .mobile-cta-bar {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
@@ -71,6 +113,13 @@ html {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  .mobile-nav nav > a {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    transition-delay: 0s !important;
   }
 }
 
@@ -94,14 +143,14 @@ h2,
 .section-header h2,
 .location-copy h2 {
   font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 h3 {
   font-family: var(--font-sans);
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .section-eyebrow {
