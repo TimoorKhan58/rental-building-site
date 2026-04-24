@@ -1,0 +1,357 @@
+/* Intent pathways + unit filters + mobile CTA bar */
+
+/* —— Pathways (shop / flat / office) —— */
+
+.pathways-section {
+  background: linear-gradient(180deg, var(--color-bg-warm) 0%, var(--color-bg) 100%);
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-bottom: clamp(2.75rem, 5vw, 4rem);
+}
+
+.journey-paths {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+}
+
+@media (min-width: 900px) {
+  .journey-paths {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Staggered reveal: delays apply when all enter viewport together */
+.pathways-section .journey-paths .reveal:nth-child(1) {
+  transition-delay: 0.04s;
+}
+
+.pathways-section .journey-paths .reveal:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.pathways-section .journey-paths .reveal:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.journey-card-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.4rem 1.45rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.35s var(--ease-out), border-color 0.35s, transform 0.35s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.journey-card-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  opacity: 0.9;
+}
+
+.journey-card--retail::before {
+  background: linear-gradient(90deg, #0d7a55, #10b981);
+}
+
+.journey-card--residential::before {
+  background: linear-gradient(90deg, var(--color-accent), #3b5f8f);
+}
+
+.journey-card--work::before {
+  background: linear-gradient(90deg, #8b7355, #a8906f);
+}
+
+.journey-paths .journey-card:hover .journey-card-inner {
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(139, 115, 85, 0.28);
+  transform: translateY(-4px);
+}
+
+.journey-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.65rem;
+}
+
+.journey-card-inner h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.journey-card-inner p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.journey-price-hint {
+  margin-top: 0.85rem !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  color: var(--color-accent) !important;
+}
+
+.journey-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.15rem;
+}
+
+.journey-actions .btn {
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: center;
+}
+
+/* —— Unit filter toolbar —— */
+
+.unit-filter-toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.15rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 640px) {
+  .unit-filter-toolbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+  }
+}
+
+.unit-filter-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.unit-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.unit-filter-btn {
+  appearance: none;
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.unit-filter-btn:hover {
+  border-color: rgba(139, 115, 85, 0.45);
+  background: var(--color-bg-warm);
+}
+
+.unit-filter-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.unit-filter-btn.is-active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 10px rgba(26, 35, 50, 0.2);
+}
+
+.unit-filter-hint {
+  margin: 0;
+  width: 100%;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+/* Decision chips on listing cards */
+.unit-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.45rem;
+  margin: -0.25rem 1.5rem 0.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.unit-chip {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.22rem 0.5rem;
+  border-radius: 6px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid rgba(226, 221, 212, 0.95);
+}
+
+.unit-chip--accent {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  border-color: rgba(45, 74, 111, 0.2);
+}
+
+/* Filtered-out cards */
+.unit-card.is-filtered-out {
+  display: none;
+}
+
+/* Empty state */
+.unit-grid-empty {
+  display: none;
+  padding: 2rem 1.25rem;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+  margin-bottom: 0;
+}
+
+.unit-grid-empty.is-visible {
+  display: block;
+}
+
+/* Gallery: crisper crossfade */
+.unit-media-image {
+  will-change: opacity;
+  transition: opacity 0.45s var(--ease-out), transform 0.55s var(--ease-out);
+}
+
+/* —— Mobile bottom CTA (replaces floating WhatsApp) —— */
+
+.mobile-cta-bar {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 85;
+  padding: 0.55rem 0.75rem;
+  padding-bottom: calc(0.55rem + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(180deg, rgba(18, 24, 32, 0.92) 0%, #121820 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2);
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+  .mobile-cta-bar {
+    display: flex;
+  }
+
+  .fab-whatsapp {
+    display: none;
+  }
+
+  body {
+    padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-cta-bar {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pathways-section .journey-paths .reveal:nth-child(1),
+  .pathways-section .journey-paths .reveal:nth-child(2),
+  .pathways-section .journey-paths .reveal:nth-child(3) {
+    transition-delay: 0s !important;
+  }
+}
+
+.mobile-cta-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: background 0.2s, transform 0.2s var(--ease-out);
+}
+
+.mobile-cta-btn--ghost {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-cta-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.mobile-cta-btn--wa {
+  background: var(--color-whatsapp);
+  color: #fff;
+  border-color: var(--color-whatsapp);
+  flex: 1.2 1 0;
+}
+
+.mobile-cta-btn--wa:hover {
+  background: var(--color-whatsapp-hover);
+}
+
+.mobile-cta-btn--phone {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.mobile-cta-btn--phone:hover {
+  background: rgba(255, 255, 255, 0.1);
+}

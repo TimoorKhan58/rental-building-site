@@ -1,0 +1,20 @@
+{
+  "origin": "https://citycenter-c1markaz-b17.pk",
+  "phones": [
+    {
+      "label": "Phone / WhatsApp",
+      "phoneDisplay": "+92 330 9089380",
+      "phoneTel": "+923309089380",
+      "whatsappE164": "923309089380"
+    },
+    {
+      "label": "Phone / call",
+      "phoneDisplay": "+92 346 5849077",
+      "phoneTel": "+923465849077",
+      "whatsappE164": "923465849077"
+    }
+  ],
+  "brandName": "City Center C1 Markaz B-17",
+  "streetAddress": "C1 Block, Street 41, B-17, Islamabad",
+  "ogImagePath": "/assets/og-share.jpg"
+}

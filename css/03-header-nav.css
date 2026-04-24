@@ -1,0 +1,218 @@
+/* Header */
+
+.site-header {
+  position: sticky;
+  top: var(--announce-h);
+  z-index: 50;
+  background: rgba(255, 252, 249, 0.82);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border-bottom: 1px solid rgba(226, 221, 212, 0.85);
+  transition: box-shadow 0.3s var(--ease-out), background 0.3s;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 8px 32px rgba(20, 24, 32, 0.06);
+  background: rgba(255, 252, 249, 0.94);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: var(--header-h);
+  padding-block: 0.75rem;
+}
+
+.logo {
+  font-weight: 400;
+  font-size: 1.35rem;
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.logo-sub {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  transition: color 0.2s var(--ease-out);
+}
+
+.nav a:hover {
+  color: var(--color-primary);
+}
+
+.nav-cta {
+  display: none;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.25s var(--ease-out), border-color 0.2s, box-shadow 0.2s;
+  z-index: 60;
+  box-shadow: var(--shadow-sm);
+}
+
+.menu-toggle:hover {
+  background: var(--color-bg-warm);
+  border-color: rgba(139, 115, 85, 0.25);
+}
+
+.menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-primary);
+  margin-inline: auto;
+  border-radius: 1px;
+  transition: transform 0.35s var(--ease-out), opacity 0.25s;
+  transform-origin: center;
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-nav {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  border-top: 1px solid transparent;
+  padding: 0 1rem;
+  background: var(--color-surface);
+  transition:
+    max-height 0.45s var(--ease-out),
+    opacity 0.3s ease,
+    padding 0.35s ease,
+    border-color 0.2s;
+}
+
+.mobile-nav.is-open {
+  max-height: 720px;
+  opacity: 1;
+  visibility: visible;
+  border-top-color: var(--color-border);
+  padding: 1rem;
+}
+
+.mobile-nav nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mobile-nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.55rem 0;
+  border-radius: var(--radius);
+  transition: background 0.2s, padding-left 0.2s;
+  font-size: 0.9375rem;
+}
+
+.mobile-nav a:hover {
+  background: var(--color-primary-light);
+  padding-left: 0.5rem;
+}
+
+.mobile-nav .btn {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  z-index: 40;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s;
+  pointer-events: none;
+}
+
+.mobile-backdrop.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: block;
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: none !important;
+  }
+
+  .mobile-backdrop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .nav {
+    display: none;
+  }
+}
+

@@ -1,0 +1,13 @@
+{
+  "name": "city-center-c1-markaz-site",
+  "private": true,
+  "description": "Static marketing site — optional tooling for validation and asset generation",
+  "scripts": {
+    "validate": "node scripts/validate-site.mjs",
+    "generate:media": "node scripts/generate-media-svgs.mjs",
+    "generate:og": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/generate-og-share.ps1"
+  },
+  "devDependencies": {
+    "html-validate": "^8.18.2"
+  }
+}
