@@ -27,55 +27,29 @@
     }
   }
 
-  /* Scroll progress + header: single rAF, layout reads only on resize (cached for scroll) */
+  /* Scroll reading progress */
   var progressEl = document.querySelector('.scroll-progress');
-  var header = document.querySelector('.site-header');
-  var docEl = document.documentElement;
-  var rafLayoutId = 0;
-  var cachedScrollable = 0;
-
-  function remeasureDocumentScrollRange() {
-    var sh = docEl.scrollHeight;
-    var ih = window.innerHeight;
-    cachedScrollable = sh > ih ? sh - ih : 0;
-  }
-
-  function applyScrollDrivenUI() {
-    rafLayoutId = 0;
-    var y = window.scrollY;
-    if (progressEl) {
-      var pct = cachedScrollable > 0 ? (y / cachedScrollable) * 100 : 0;
+  if (progressEl) {
+    function updateScrollProgress() {
+      var docEl = document.documentElement;
+      var scrollable = docEl.scrollHeight - window.innerHeight;
+      var pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
       progressEl.style.width = Math.min(100, Math.max(0, pct)) + '%';
     }
-    if (header) {
-      header.classList.toggle('is-scrolled', y > 20);
-    }
+    updateScrollProgress();
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    window.addEventListener('resize', updateScrollProgress, { passive: true });
   }
 
-  function scheduleScrollDriven() {
-    if (!rafLayoutId) {
-      rafLayoutId = window.requestAnimationFrame(applyScrollDrivenUI);
+  /* Header shadow on scroll */
+  var header = document.querySelector('.site-header');
+  if (header) {
+    function onScroll() {
+      if (window.scrollY > 20) header.classList.add('is-scrolled');
+      else header.classList.remove('is-scrolled');
     }
-  }
-
-  if (progressEl || header) {
-    remeasureDocumentScrollRange();
-    applyScrollDrivenUI();
-    window.addEventListener(
-      'scroll',
-      function () {
-        scheduleScrollDriven();
-      },
-      { passive: true }
-    );
-    window.addEventListener(
-      'resize',
-      function () {
-        remeasureDocumentScrollRange();
-        scheduleScrollDriven();
-      },
-      { passive: true }
-    );
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 
   /* Mobile menu */
