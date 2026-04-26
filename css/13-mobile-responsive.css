@@ -45,7 +45,51 @@ body {
   }
 }
 
-/* —— Hero —— */
+/* —— Hero —— mobile (≤768px): CLS, layout reserve, Dvh; desktop ≥769px unchanged —— */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 100dvh;
+    contain: layout style;
+  }
+
+  .hero-layout {
+    min-height: min(90svh, 52rem);
+  }
+
+  .hero-copy {
+    min-height: min(92svh, 48rem);
+    contain: layout;
+  }
+
+  .hero h1 {
+    min-height: 3.1em; /* reserve multi-line Cormorant to reduce font-swap reflow */
+  }
+
+  .hero-visual-card {
+    aspect-ratio: 390 / 488;
+    max-width: 100%;
+  }
+
+  .btn.btn-whatsapp.btn-lg,
+  .mobile-cta-btn.mobile-cta-btn--wa {
+    background-color: #128c7e;
+    border-color: #128c7e;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .btn.btn-whatsapp.btn-lg:hover,
+  .mobile-cta-btn.mobile-cta-btn--wa:hover {
+    background-color: #0f7065;
+    border-color: #0f7065;
+  }
+
+  .btn.btn-whatsapp.btn-lg svg,
+  .mobile-cta-btn.mobile-cta-btn--wa svg {
+    color: #fff;
+  }
+}
+
 @media (max-width: 639px) {
   .hero {
     padding: clamp(2rem, 6vw, 3.25rem) 0 clamp(2.5rem, 7vw, 4rem);

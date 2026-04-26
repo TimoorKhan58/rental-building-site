@@ -4,8 +4,14 @@
   position: relative;
   padding: clamp(3rem, 8vw, 5.5rem) 0 clamp(3.5rem, 10vw, 6rem);
   overflow: hidden;
-  min-height: 100vh;
-  contain: layout style;
+}
+
+/* min-height + containment: desktop / tablet only — mobile uses 13-mobile-responsive */
+@media (min-width: 769px) {
+  .hero {
+    min-height: 100vh;
+    contain: layout style;
+  }
 }
 
 .hero-bg {
@@ -66,8 +72,13 @@
 .hero-copy {
   max-width: 720px;
   perspective: 1200px;
-  min-height: 520px;
-  contain: layout;
+}
+
+@media (min-width: 769px) {
+  .hero-copy {
+    min-height: 520px;
+    contain: layout;
+  }
 }
 
 .hero-animate .hero-kicker {
