@@ -380,9 +380,9 @@
 }
 
 .mobile-cta-btn--wa {
-  background: var(--color-whatsapp);
-  color: #fff;
-  border-color: var(--color-whatsapp);
+  background-color: #25d366;
+  color: #ffffff;
+  border-color: #25d366;
   flex: 1.2 1 0;
 }
 
