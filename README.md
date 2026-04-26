@@ -6,10 +6,11 @@ Static marketing site (HTML, CSS, vanilla JS). Deploy the folder as static files
 
 ```bash
 npm install
-npm run validate      # origin, WhatsApp, OG checks + html-validate
-npm run generate:media  # SVG placeholders in assets/media/
-npm run generate:og     # optional branded og-share.png (site default is og-share.jpg)
-npm run build:analytics # rebuild vendor/vercel-analytics.js after upgrading @vercel/analytics
+npm run validate           # origin, WhatsApp, OG checks + html-validate
+npm run generate:media     # SVG placeholders in assets/media/
+npm run generate:og        # optional branded og-share.png (site default is og-share.jpg)
+npm run build:analytics    # rebuild vendor/vercel-analytics.js after upgrading @vercel/analytics
+npm run build:speed-insights # rebuild vendor/vercel-speed-insights.js after upgrading @vercel/speed-insights
 ```
 
 - **Config:** [`site-config.json`](site-config.json) and [`site-config.js`](site-config.js) — see [`docs/CONFIG.md`](docs/CONFIG.md).
@@ -19,3 +20,7 @@ npm run build:analytics # rebuild vendor/vercel-analytics.js after upgrading @ve
 ## Vercel Web Analytics
 
 Pages load [`vendor/vercel-analytics.js`](vendor/vercel-analytics.js), built from [`scripts/analytics-entry.mjs`](scripts/analytics-entry.mjs) via `npm run build:analytics`. In the Vercel project dashboard, enable **Web Analytics** (Project → Analytics), deploy, then browse the site; events usually appear within ~30 seconds.
+
+## Vercel Speed Insights
+
+Pages load [`vendor/vercel-speed-insights.js`](vendor/vercel-speed-insights.js), built from [`scripts/speed-insights-entry.mjs`](scripts/speed-insights-entry.mjs) via `npm run build:speed-insights`. In the Vercel project dashboard, enable **Speed Insights** (Project → Speed Insights), deploy, then browse the site; performance metrics appear after users visit your site.
