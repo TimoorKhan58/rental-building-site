@@ -5,9 +5,12 @@
   "scripts": {
     "validate": "node scripts/validate-site.mjs",
     "generate:media": "node scripts/generate-media-svgs.mjs",
-    "generate:og": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/generate-og-share.ps1"
+    "generate:og": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/generate-og-share.ps1",
+    "build:analytics": "esbuild scripts/analytics-entry.mjs --bundle --minify --format=iife --target=es2018 --outfile=vendor/vercel-analytics.js"
   },
   "devDependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "esbuild": "^0.28.0",
     "html-validate": "^8.18.2"
   }
 }
