@@ -4,8 +4,11 @@
   var C = typeof window !== 'undefined' && window.__SITE__ ? window.__SITE__ : {};
   var WA = C.whatsappUrl || 'https://wa.me/923309089380';
 
-  /* Hero: word-by-word headline (premium entrance) */
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  /* Hero: word-by-word headline (desktop only — on mobile, DOM + layout reflow drives CLS) */
+  if (
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+    window.matchMedia('(min-width: 769px)').matches
+  ) {
     var heroHeading = document.getElementById('hero-heading');
     if (heroHeading && !heroHeading.classList.contains('hero-h1--split')) {
       var headingText = heroHeading.textContent.trim();

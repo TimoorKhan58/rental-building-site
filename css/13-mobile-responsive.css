@@ -68,25 +68,8 @@ body {
   .hero-visual-card {
     aspect-ratio: 390 / 488;
     max-width: 100%;
-  }
-
-  .btn.btn-whatsapp.btn-lg,
-  .mobile-cta-btn.mobile-cta-btn--wa {
-    background-color: #128c7e;
-    border-color: #128c7e;
-    color: #fff;
-    font-weight: 600;
-  }
-
-  .btn.btn-whatsapp.btn-lg:hover,
-  .mobile-cta-btn.mobile-cta-btn--wa:hover {
-    background-color: #0f7065;
-    border-color: #0f7065;
-  }
-
-  .btn.btn-whatsapp.btn-lg svg,
-  .mobile-cta-btn.mobile-cta-btn--wa svg {
-    color: #fff;
+    /* vertical float + blur fight cumulative layout in audits */
+    animation: none;
   }
 }
 

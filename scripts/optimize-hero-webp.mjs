@@ -1,7 +1,5 @@
 /**
- * Hero responsive WebP: hero-sm.webp 400w, hero-placeholder.webp 683×853; main file under 25 KiB.
- * Also writes hero-placeholder.jpg fallback at 683×853.
- * Source: assets/media/hero-placeholder.jpg, or if missing, existing hero-placeholder.webp
+ * Hero responsive WebP: 390/600/683/780 w descriptors + jpg@683, hero-sm 400w.
  * Run: node scripts/optimize-hero-webp.mjs
  */
 import fs from 'node:fs';
@@ -24,9 +22,12 @@ const W683 = 683;
 const H853 = 853;
 const W400 = 400;
 const H500 = 500;
-/* Mobile LCP: displayed ~390×488 in audits */
 const W390 = 390;
 const H488 = 488;
+const W600 = 600;
+const H750 = 750;
+const W780 = 780;
+const H975 = 975;
 
 const base = sharp(sourcePath).rotate().resize(W683, H853, { fit: 'cover', position: 'attention' });
 
@@ -34,13 +35,13 @@ let quality = 80;
 let buf683;
 for (let i = 0; i < 16; i++) {
   buf683 = await base.clone().webp({ quality, effort: 6, smartSubsample: true }).toBuffer();
-  if (buf683.length <= 25 * 1024) break;
-  quality -= 4;
+  if (buf683.length <= 20 * 1024) break;
+  quality -= 3;
 }
-if (buf683.length > 25 * 1024) {
-  for (let q = quality; q >= 45; q -= 3) {
+if (buf683.length > 20 * 1024) {
+  for (let q = quality; q >= 42; q -= 2) {
     buf683 = await base.clone().webp({ quality: q, effort: 6, smartSubsample: true }).toBuffer();
-    if (buf683.length <= 25 * 1024) break;
+    if (buf683.length <= 20 * 1024) break;
   }
 }
 
@@ -55,13 +56,30 @@ const buf400 = await sharp(sourcePath)
 const out400 = path.join(outDir, 'hero-sm.webp');
 fs.writeFileSync(out400, buf400);
 
+const qSide = Math.max(68, quality - 4);
 const buf390 = await sharp(sourcePath)
   .rotate()
   .resize(W390, H488, { fit: 'cover', position: 'attention' })
-  .webp({ quality: Math.max(70, quality - 4), effort: 6, smartSubsample: true })
+  .webp({ quality: qSide, effort: 6, smartSubsample: true })
   .toBuffer();
 const out390 = path.join(outDir, 'hero-390.webp');
 fs.writeFileSync(out390, buf390);
+
+const buf600 = await sharp(sourcePath)
+  .rotate()
+  .resize(W600, H750, { fit: 'cover', position: 'attention' })
+  .webp({ quality: qSide, effort: 6, smartSubsample: true })
+  .toBuffer();
+const out600 = path.join(outDir, 'hero-600.webp');
+fs.writeFileSync(out600, buf600);
+
+const buf780 = await sharp(sourcePath)
+  .rotate()
+  .resize(W780, H975, { fit: 'cover', position: 'attention' })
+  .webp({ quality: qSide, effort: 6, smartSubsample: true })
+  .toBuffer();
+const out780 = path.join(outDir, 'hero-780.webp');
+fs.writeFileSync(out780, buf780);
 
 const jpgBuf = await sharp(buf683)
   .jpeg({ quality: 80, mozjpeg: true, chromaSubsampling: '4:2:0' })
@@ -71,7 +89,7 @@ const tmpJpg = path.join(outDir, '._hero-jpg-temp');
 try {
   if (fs.existsSync(jpgOut)) fs.rmSync(jpgOut);
 } catch (e) {
-  /* try overwrite via temp + rename */
+  /* */
 }
 fs.writeFileSync(tmpJpg, jpgBuf);
 fs.renameSync(tmpJpg, jpgOut);
@@ -79,7 +97,11 @@ fs.renameSync(tmpJpg, jpgOut);
 const m683 = await sharp(buf683).metadata();
 const m400 = await sharp(buf400).metadata();
 const m390 = await sharp(buf390).metadata();
+const m600 = await sharp(buf600).metadata();
+const m780 = await sharp(buf780).metadata();
 console.log('Wrote', path.relative(root, out683), `${(buf683.length / 1024).toFixed(1)} KiB`, `${m683.width}x${m683.height}`);
 console.log('Wrote', path.relative(root, out400), `${(buf400.length / 1024).toFixed(1)} KiB`, `${m400.width}x${m400.height}`);
 console.log('Wrote', path.relative(root, out390), `${(buf390.length / 1024).toFixed(1)} KiB`, `${m390.width}x${m390.height}`);
+console.log('Wrote', path.relative(root, out600), `${(buf600.length / 1024).toFixed(1)} KiB`, `${m600.width}x${m600.height}`);
+console.log('Wrote', path.relative(root, out780), `${(buf780.length / 1024).toFixed(1)} KiB`, `${m780.width}x${m780.height}`);
 console.log('Wrote', path.relative(root, jpgOut), `${(jpgBuf.length / 1024).toFixed(1)} KiB`);

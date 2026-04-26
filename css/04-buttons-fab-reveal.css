@@ -71,9 +71,9 @@
 }
 
 .btn-whatsapp {
-  background-color: #25d366;
+  background-color: var(--color-whatsapp);
   color: #ffffff;
-  border-color: #25d366;
+  border-color: var(--color-whatsapp);
 }
 
 .btn-whatsapp svg {
@@ -84,7 +84,7 @@
   background: var(--color-whatsapp-hover);
   border-color: var(--color-whatsapp-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 6px 20px rgba(7, 46, 42, 0.35);
 }
 
 /* Floating WhatsApp */
@@ -123,17 +123,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #25d366;
+  background-color: var(--color-whatsapp);
   color: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 8px 28px rgba(7, 46, 42, 0.35);
   transition: transform 0.25s var(--ease-spring), box-shadow 0.25s;
   animation: fab-enter 0.55s var(--ease-spring) 0.8s both;
 }
 
 .fab-whatsapp:hover {
   transform: scale(1.05);
-  box-shadow: 0 10px 32px rgba(37, 211, 102, 0.5);
+  box-shadow: 0 10px 32px rgba(7, 46, 42, 0.45);
 }
 
 @media (min-width: 768px) {

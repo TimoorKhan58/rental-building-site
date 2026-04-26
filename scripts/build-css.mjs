@@ -63,7 +63,7 @@ const indexPath = path.join(root, 'index.html');
 const indexHtml = fs.readFileSync(indexPath, 'utf8');
 const replaced = indexHtml.replace(
   /(<style[^>]*\bid=["']cc-critical-hero["'][^>]*>)([\s\S]*?)(<\/style>)/i,
-  '$1' + criticalMin + '$3'
+  (_, a, _inner, c) => a + criticalMin + c
 );
 if (replaced === indexHtml) {
   console.warn('Warning: no <style id="cc-critical-hero"> in index.html — critical CSS not injected.');
