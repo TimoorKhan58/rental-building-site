@@ -32,12 +32,12 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="image" href="assets/media/hero-placeholder.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/media/hero-placeholder.webp" type="image/webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="styles.css">
 
-  <script src="site-config.js"></script>
+  <script src="site-config.js" defer></script>
   <script defer src="/vendor/vercel-analytics.js"></script>
   <script type="application/ld+json">
   {
@@ -322,7 +322,7 @@
         <span></span><span></span><span></span>
       </button>
     </div>
-    <div id="mobile-nav" class="mobile-nav" aria-hidden="true">
+    <div id="mobile-nav" class="mobile-nav" aria-hidden="true" inert>
       <nav aria-label="Mobile">
         <a href="#pathways">Path</a>
         <a href="#units">Units</a>
@@ -396,7 +396,10 @@
         </div>
         <div class="hero-visual reveal" data-reveal="fade" aria-hidden="true">
           <div class="hero-visual-card">
-            <img src="assets/media/hero-placeholder.jpg" alt="City Center — C1 Markaz, B-17 Islamabad (representative image)" width="400" height="500" fetchpriority="high" decoding="async" class="hero-visual-img">
+            <picture>
+              <source srcset="assets/media/hero-placeholder.webp" type="image/webp">
+              <img src="assets/media/hero-placeholder.jpg" alt="City Center — C1 Markaz, B-17 Islamabad (representative image)" width="900" height="1125" fetchpriority="high" decoding="async" class="hero-visual-img">
+            </picture>
             <p class="hero-visual-caption">Imagery is representative. Ask on WhatsApp for <strong>current photos and video</strong> of units available now.</p>
           </div>
         </div>
@@ -584,7 +587,8 @@
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4"/></svg>
             </div>
             <h3>Shops</h3>
-            <ul class="unit-chips" aria-label="Highlights">
+            <p class="visually-hidden" id="chips-lbl-unit-shop">Highlights</p>
+            <ul class="unit-chips" aria-labelledby="chips-lbl-unit-shop">
               <li><span class="unit-chip">Retail</span></li>
               <li><span class="unit-chip unit-chip--accent">Markaz frontage</span></li>
               <li><span class="unit-chip">Best for: brands &amp; services</span></li>
@@ -619,7 +623,8 @@
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
             <h3>1-bed flats</h3>
-            <ul class="unit-chips" aria-label="Highlights">
+            <p class="visually-hidden" id="chips-lbl-unit-flat-1">Highlights</p>
+            <ul class="unit-chips" aria-labelledby="chips-lbl-unit-flat-1">
               <li><span class="unit-chip">1 bedroom</span></li>
               <li><span class="unit-chip unit-chip--accent">~450 sq ft</span></li>
               <li><span class="unit-chip">Best for: professionals &amp; couples</span></li>
@@ -654,7 +659,8 @@
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/><path d="M9 12h6"/></svg>
             </div>
             <h3>2-bed flats</h3>
-            <ul class="unit-chips" aria-label="Highlights">
+            <p class="visually-hidden" id="chips-lbl-unit-flat-2">Highlights</p>
+            <ul class="unit-chips" aria-labelledby="chips-lbl-unit-flat-2">
               <li><span class="unit-chip">2 bedroom</span></li>
               <li><span class="unit-chip unit-chip--accent">~749 sq ft</span></li>
               <li><span class="unit-chip">Best for: small families</span></li>
@@ -689,7 +695,8 @@
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22v-6h6v6"/><path d="M9 10h6v6H9z"/><path d="M4 16h4"/></svg>
             </div>
             <h3>3-bed flats</h3>
-            <ul class="unit-chips" aria-label="Highlights">
+            <p class="visually-hidden" id="chips-lbl-unit-flat-3">Highlights</p>
+            <ul class="unit-chips" aria-labelledby="chips-lbl-unit-flat-3">
               <li><span class="unit-chip">3 bedroom</span></li>
               <li><span class="unit-chip unit-chip--accent">~1,049 sq ft</span></li>
               <li><span class="unit-chip">Best for: larger families</span></li>
@@ -724,7 +731,8 @@
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
             </div>
             <h3>Offices</h3>
-            <ul class="unit-chips" aria-label="Highlights">
+            <p class="visually-hidden" id="chips-lbl-unit-office">Highlights</p>
+            <ul class="unit-chips" aria-labelledby="chips-lbl-unit-office">
               <li><span class="unit-chip">Workspace</span></li>
               <li><span class="unit-chip unit-chip--accent">~350 sq ft</span></li>
               <li><span class="unit-chip">Best for: teams &amp; consultants</span></li>
@@ -844,7 +852,7 @@
         </header>
         <div class="reviews-grid">
           <article class="review-card reveal">
-            <div class="review-stars" aria-label="5 out of 5 stars">
+            <div class="review-stars" role="img" aria-label="5 out of 5 stars">
               <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-source">Building feedback · <time datetime="2024-06">Jun 2024</time></p>
@@ -852,7 +860,7 @@
             <p class="review-name">Ahmed K. <span class="review-role">Resident tenant</span></p>
           </article>
           <article class="review-card reveal">
-            <div class="review-stars" aria-label="5 out of 5 stars">
+            <div class="review-stars" role="img" aria-label="5 out of 5 stars">
               <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-source">Building feedback · <time datetime="2024-08">Aug 2024</time></p>
@@ -860,7 +868,7 @@
             <p class="review-name">Sara M. <span class="review-role">Resident tenant</span></p>
           </article>
           <article class="review-card reveal">
-            <div class="review-stars" aria-label="5 out of 5 stars">
+            <div class="review-stars" role="img" aria-label="5 out of 5 stars">
               <span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             </div>
             <p class="review-source">Building feedback · <time datetime="2024-11">Nov 2024</time></p>

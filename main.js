@@ -81,6 +81,11 @@
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     panel.classList.toggle('is-open', open);
     panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    if (open) {
+      panel.removeAttribute('inert');
+    } else {
+      panel.setAttribute('inert', '');
+    }
     document.body.classList.toggle('nav-open', open);
     if (backdrop) backdrop.classList.toggle('is-visible', open);
   }

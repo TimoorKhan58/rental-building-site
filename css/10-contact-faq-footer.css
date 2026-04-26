@@ -57,7 +57,7 @@
 
 .contact-intro p {
   margin: 0 0 1rem;
-  opacity: 0.95;
+  color: #e8eaed;
   max-width: 48ch;
 }
 
@@ -104,7 +104,7 @@
   font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  opacity: 0.85;
+  color: #b8c0cc;
 }
 
 .contact-phones {
@@ -135,7 +135,7 @@
 .whatsapp-hint {
   margin: 0.75rem 0 0;
   font-size: 0.8125rem;
-  opacity: 0.9;
+  color: #c9ced6;
   text-align: inherit;
 }
 
@@ -157,7 +157,7 @@
 .inquiry-lead {
   margin: 0 0 1.25rem;
   font-size: 0.9rem;
-  opacity: 0.9;
+  color: #d8dce3;
 }
 
 .inquiry-form {
@@ -192,12 +192,12 @@
 .form-label {
   font-size: 0.8125rem;
   font-weight: 600;
-  opacity: 0.9;
+  color: #f1f3f5;
 }
 
 .form-optional {
   font-weight: 400;
-  opacity: 0.75;
+  color: #c9ced6;
 }
 
 .inquiry-form input,
@@ -219,7 +219,7 @@
 
 .inquiry-form input::placeholder,
 .inquiry-form textarea::placeholder {
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .inquiry-form input:focus,
@@ -302,7 +302,7 @@
 .site-footer {
   padding: 2.75rem 0 2rem;
   background: linear-gradient(180deg, #121820 0%, #0d1218 100%);
-  color: rgba(255, 255, 255, 0.88);
+  color: #e5e7eb;
   font-size: 0.875rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -352,7 +352,7 @@
 }
 
 .footer-meta {
-  opacity: 0.8;
+  color: #c9ced6;
   font-size: 0.8125rem;
 }
 
@@ -364,7 +364,7 @@
 }
 
 .footer-link {
-  color: rgba(255, 255, 255, 0.9);
+  color: #f1f3f5;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.875rem;
@@ -384,7 +384,7 @@
   max-width: 560px;
   font-size: 0.75rem;
   line-height: 1.5;
-  opacity: 0.72;
+  color: #b0b8c4;
 }
 
 .footer-bottom-bar {
@@ -404,14 +404,14 @@
 .footer-copy {
   margin: 0;
   font-size: 0.8125rem;
-  opacity: 0.85;
+  color: #c9d0d8;
   flex: 1 1 auto;
   min-width: min(100%, 200px);
   text-align: left;
 }
 
 .footer-credit {
-  color: rgba(255, 255, 255, 0.75);
+  color: #b8c0cc;
   text-decoration: none;
   font-size: 0.8125rem;
   font-weight: 600;

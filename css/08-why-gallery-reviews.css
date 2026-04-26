@@ -185,8 +185,7 @@
   font-family: var(--font-display);
   font-size: 2.5rem;
   line-height: 1;
-  color: var(--color-gold-soft);
-  opacity: 0.9;
+  color: #6d6358;
   pointer-events: none;
 }
 

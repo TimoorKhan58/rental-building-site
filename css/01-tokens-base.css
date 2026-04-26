@@ -9,8 +9,8 @@
   --color-primary-light: #e6e9ef;
   --color-accent: #2d4a6f;
   --color-accent-soft: rgba(45, 74, 111, 0.12);
-  --color-gold: #8b7355;
-  --color-gold-soft: rgba(139, 115, 85, 0.14);
+  --color-gold: #745e45;
+  --color-gold-soft: rgba(116, 94, 69, 0.14);
   --color-text: #141820;
   --color-text-muted: #5e6673;
   --color-border: #e2ddd4;
@@ -18,7 +18,7 @@
   --color-success-bg: #ecf8f3;
   --color-whatsapp: #25d366;
   --color-whatsapp-hover: #1dae56;
-  --color-star: #c9a227;
+  --color-star: #8a5f0a;
   --color-footer-bg: #121820;
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
