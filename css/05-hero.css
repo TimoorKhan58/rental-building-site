@@ -72,6 +72,9 @@
 .hero-copy {
   max-width: 720px;
   perspective: 1200px;
+  min-height: 400px;
+  will-change: auto;
+  transform: translateZ(0);
 }
 
 @media (min-width: 769px) {

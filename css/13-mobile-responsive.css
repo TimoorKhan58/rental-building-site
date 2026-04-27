@@ -48,7 +48,7 @@ body {
 /* —— Hero —— mobile (≤768px): CLS, layout reserve, Dvh; desktop ≥769px unchanged —— */
 @media (max-width: 768px) {
   .hero {
-    min-height: 100dvh;
+    min-height: 100svh;
     contain: layout style;
   }
 
@@ -57,7 +57,6 @@ body {
   }
 
   .hero-copy {
-    min-height: min(92svh, 48rem);
     contain: layout;
   }
 
