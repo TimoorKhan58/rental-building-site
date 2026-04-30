@@ -6,6 +6,33 @@
 
   var ccFontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
 
+  /* Announcement bar: CSS falls back to --announce-h: 44px, but copy + CTA wrap higher on phones.
+     Header is position:fixed with top: var(--announce-h); if the bar is taller, its z-index paints
+     over the header. Measure and sync the variable for body padding + header offset. */
+  var announceBar = document.querySelector('.announcement-bar');
+  var announceSyncRaf = 0;
+  function syncAnnouncementHeight() {
+    if (!announceBar) return;
+    var h = announceBar.getBoundingClientRect().height;
+    if (!h) return;
+    document.documentElement.style.setProperty('--announce-h', Math.ceil(h) + 'px');
+  }
+  function scheduleSyncAnnouncementHeight() {
+    if (announceSyncRaf) return;
+    announceSyncRaf = requestAnimationFrame(function () {
+      announceSyncRaf = 0;
+      syncAnnouncementHeight();
+    });
+  }
+  if (announceBar) {
+    syncAnnouncementHeight();
+    window.addEventListener('resize', scheduleSyncAnnouncementHeight, { passive: true });
+    ccFontsReady.then(scheduleSyncAnnouncementHeight);
+    if (typeof ResizeObserver === 'function') {
+      new ResizeObserver(scheduleSyncAnnouncementHeight).observe(announceBar);
+    }
+  }
+
   /* Hero: word-by-word headline (desktop only — on mobile, DOM + layout reflow drives CLS) */
   ccFontsReady.then(function () {
     if (

@@ -31,6 +31,7 @@
   --shadow-card-hover: 0 28px 60px rgba(20, 24, 32, 0.12);
   --shadow-inset-soft: inset 0 1px 0 rgba(255, 255, 255, 0.65);
   --header-h: 76px;
+  /* Measured at runtime in main.js (wrap can exceed one line); fallback before/without JS */
   --announce-h: 44px;
   --fab-safe: 5.5rem;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
