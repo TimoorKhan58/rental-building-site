@@ -1,0 +1,16 @@
+{
+  "name": "City Center C1 Markaz B-17 — static site",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "static-server",
+      "command": "python3 -m http.server 3000"
+    }
+  ],
+  "ports": [
+    {
+      "name": "static-site",
+      "port": 3000
+    }
+  ]
+}
